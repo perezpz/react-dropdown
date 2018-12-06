@@ -1,0 +1,115 @@
+.br-dropdown {
+  position: relative;
+  display: inline-block;
+  color: #48576a;
+  font-size: 12px;
+}
+
+.br-dropdown-inner {
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 6px 0;
+  border-radius: 4px;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  min-width: 100px;
+  z-index: 10;
+  outline: none;
+  list-style-type: none;
+  cursor: pointer;
+}
+
+.br-dropdown-menu {
+  padding: 0;
+  cursor: pointer;
+  transform-origin: 0 0;
+}
+
+.br-dropdown-menu-item {
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.br-dropdown-menu-item:last-child {
+  border-bottom: 0;
+}
+
+.br-dropdown-menu-item:hover {
+  opacity: 0.7;
+}
+
+.br-dropdown-menu-item:not(.is-disabled):hover {
+  background-color: #e6f7ff;
+}
+
+.br-dropdown-link {
+  cursor: pointer;
+}
+
+.br-dropdown-link:hover {
+  opacity: 0.7;
+}
+
+.br-dropdown-hidden {
+  display: none;
+}
+
+.slide-up-enter,
+.slide-up-appear {
+  opacity: 0;
+  animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.slide-up-enter,
+.slide-up-appear,
+.slide-up-leave {
+  animation-duration: 0.2s;
+  animation-fill-mode: both;
+  animation-play-state: paused;
+}
+
+.slide-up-leave {
+  animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+}
+
+.slide-up-enter.slide-up-enter-active,
+.slide-up-appear.slide-up-appear-active {
+  animation-name: brSlideUpIn;
+  animation-play-state: running;
+}
+
+.slide-up-leave.slide-up-leave-active {
+  animation-name: brSlideUpOut;
+  animation-play-state: running;
+}
+
+@keyframes brSlideUpIn {
+  0% {
+    opacity: 0;
+    transform-origin: 0% 0%;
+    transform: scaleY(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform-origin: 0% 0%;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes brSlideUpOut {
+  0% {
+    opacity: 1;
+    transform-origin: 0% 0%;
+    transform: scaleY(1);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 0% 0%;
+    transform: scaleY(0.8);
+  }
+}

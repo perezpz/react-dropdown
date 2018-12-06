@@ -1,0 +1,21 @@
+# Project related
+dist
+build
+config
+lib
+
+# node packages
+node_modules
+package-lock.json
+
+# Folder config file
+.DS_Store
+
+# various IDEs
+.vscode
+.idea/
+*.sublime-*
+
+# Logs
+*.log
+npm-debug.log
