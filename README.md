@@ -1,6 +1,4 @@
-## react-dropdown
-
----
+# react-dropdown
 
 Simple Dropdown component for React
 
@@ -14,15 +12,15 @@ Simple Dropdown component for React
 [node-image]: https://img.shields.io/badge/node.js-%3E%3D8.11.1-green.svg
 [node-url]: http://nodejs.org/download/
 [download-image]: https://img.shields.io/npm/v/@bronzetrees/react-dropdown.svg?style=flat-square
-[download-url]: https://www.npmjs.com/package/@bronzetrees/react-dropdown
+[download-url]: https://www.nvpmjs.com/package/@bronzetrees/react-dropdown
 
-### 📦 Install
+## Install
 
 ```bash
 npm install @bronzetrees/react-dropdown --save
 ```
 
-### 🔨 Usage
+## Usage
 
 ```jsx
 import Dropdown from '@bronzetrees/react-dropdown'
@@ -43,9 +41,9 @@ ReactDOM.render(
 )
 ```
 
-### API
+## API
 
-#### props
+### props
 
 <table class="table table-bordered table-striped">
     <thead>
@@ -72,6 +70,6 @@ ReactDOM.render(
     </tbody>
 </table>
 
-### License
+## License
 
-@bronzetrees/react-dropdown is released under the MIT license.
+@bronzetrees/react-dropdown is released under the [MIT](https://github.com/OnlyBreak/react-dropdown/blob/master/LICENSE) license.
