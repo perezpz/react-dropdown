@@ -1,0 +1,15 @@
+language: node_js
+
+catch:
+  npm: true
+  directories:
+    - node_modules
+
+install: npm install
+
+script: npm test
+
+notification:
+  email:
+    - bronzetrees16@163.com
+  slack: bronzetrees:vBjkaL9rHelIH2NaKwPgFNQz
