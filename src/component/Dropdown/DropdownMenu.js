@@ -1,23 +1,23 @@
-import React, { PureComponent } from 'react'
-import Animate from 'rc-animate'
-import classNames from 'classnames'
-import { DropdownContext } from './Dropdown'
-import Popper from 'popper.js'
+import React, { PureComponent } from 'react';
+import Animate from 'rc-animate';
+import classNames from 'classnames';
+import { DropdownContext } from './Dropdown';
+import Popper from 'popper.js';
 
 class DropdownMenu extends PureComponent {
   componentWillUnmount() {
     if (this.popperElem) {
-      this.popperElem.destroy()
+      this.popperElem.destroy();
     }
   }
 
   getTransitionName() {
-    const { placement = '' } = this.props
+    const { placement = '' } = this.props;
 
     if (placement.indexOf('top') >= 0) {
-      return 'slide-down'
+      return 'slide-down';
     }
-    return 'slide-up'
+    return 'slide-up';
   }
 
   render() {
@@ -33,8 +33,8 @@ class DropdownMenu extends PureComponent {
               >
                 <ul className="br-dropdown-menu">{this.props.children}</ul>
               </div>
-            )
-          }
+            );
+          };
 
           return (
             <Animate
@@ -45,15 +45,15 @@ class DropdownMenu extends PureComponent {
             >
               <Box visible={visible} />
             </Animate>
-          )
+          );
         }}
       </DropdownContext.Consumer>
-    )
+    );
   }
 
   renderPopper(ref, placement) {
     if (!ref) {
-      return
+      return;
     }
 
     this.popperElem = new Popper(ref.parentNode, ref, {
@@ -63,8 +63,8 @@ class DropdownMenu extends PureComponent {
           gpuAcceleration: false
         }
       }
-    })
+    });
   }
 }
 
-export default DropdownMenu
+export default DropdownMenu;

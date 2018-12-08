@@ -1,16 +1,16 @@
-import React, { PureComponent } from 'react'
-import { DropdownContext } from './Dropdown'
+import React, { PureComponent } from 'react';
+import { DropdownContext } from './Dropdown';
 
 class DropdownItem extends PureComponent {
   handleClick(handleClickMenuItem) {
-    const { onCommand } = this.props
+    const { onCommand } = this.props;
 
     if (handleClickMenuItem) {
-      handleClickMenuItem()
+      handleClickMenuItem();
     }
 
     if (onCommand) {
-      onCommand()
+      onCommand();
     }
   }
 
@@ -26,8 +26,8 @@ class DropdownItem extends PureComponent {
           </li>
         )}
       </DropdownContext.Consumer>
-    )
+    );
   }
 }
 
-export default DropdownItem
+export default DropdownItem;

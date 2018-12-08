@@ -1,94 +1,98 @@
-import React, { PureComponent, createContext } from 'react'
-import ReactDOM from 'react-dom'
-import ClickOutside from 'react-click-outside'
+import React, { PureComponent, createContext } from 'react';
+import ReactDOM from 'react-dom';
+import ClickOutside from 'react-click-outside';
 
-import './Dropdown.css'
+import './Dropdown.css';
 
-export const DropdownContext = createContext({})
+export const DropdownContext = createContext({});
 
 class Dropdown extends PureComponent {
   static defaultProps = {
     trigger: 'click',
     menuAlign: 'bottom-end'
-  }
+  };
 
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       visible: false,
       handleClickMenuItem: () => this.handleClickMenuItem(),
       placement: () => this.placement()
-    }
+    };
   }
 
   componentDidMount() {
-    this.initEvent()
+    this.initEvent();
   }
 
   handleClickMenuItem() {
     if (this.state.visible) {
       this.setState({
         visible: false
-      })
+      });
     }
   }
 
   initEvent() {
-    const { trigger } = this.props
-    const triggerElm = ReactDOM.findDOMNode(this.defaultElem)
+    const { trigger } = this.props;
+    const triggerElm = ReactDOM.findDOMNode(this.defaultElem);
+
+    if (!triggerElm) {
+      return;
+    }
 
     if (trigger === 'hover') {
-      triggerElm.addEventListener('mouseenter', this.show.bind(this))
-      triggerElm.addEventListener('mouseleave', this.hide.bind(this))
+      triggerElm.addEventListener('mouseenter', this.show.bind(this));
+      triggerElm.addEventListener('mouseleave', this.hide.bind(this));
     }
 
     if (trigger === 'click') {
-      triggerElm.addEventListener('click', this.toggleMenu.bind(this))
+      triggerElm.addEventListener('click', this.toggleMenu.bind(this));
     }
   }
 
   toggleMenu() {
     if (this.state.visible) {
-      this.hide()
+      this.hide();
     } else {
-      this.show()
+      this.show();
     }
   }
 
   show() {
     this.setState({
       visible: true
-    })
+    });
   }
 
   hide() {
     this.setState({
       visible: false
-    })
+    });
   }
 
   handleClickOutside() {
     if (this.state.visible) {
-      this.setState({ visible: false })
+      this.setState({ visible: false });
     }
   }
 
   clearDelayTimer() {
     if (this.delayTimer) {
-      clearTimeout(this.delayTimer)
-      this.delayTimer = null
+      clearTimeout(this.delayTimer);
+      this.delayTimer = null;
     }
   }
 
   placement() {
-    const { menuAlign } = this.props
+    const { menuAlign } = this.props;
 
-    return menuAlign
+    return menuAlign;
   }
 
   render() {
-    const { menu, children } = this.props
+    const { menu, children } = this.props;
 
     return (
       <DropdownContext.Provider value={this.state}>
@@ -99,8 +103,8 @@ class Dropdown extends PureComponent {
           {React.cloneElement(menu)}
         </div>
       </DropdownContext.Provider>
-    )
+    );
   }
 }
 
-export default ClickOutside(Dropdown)
+export default ClickOutside(Dropdown);

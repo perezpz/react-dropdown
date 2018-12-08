@@ -1,6 +1,6 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import Dropdown from '../component/Dropdown'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Dropdown from '../component/Dropdown';
 
 ReactDOM.render(
   <Dropdown
@@ -15,4 +15,4 @@ ReactDOM.render(
     <span>dropdown</span>
   </Dropdown>,
   document.getElementById('root')
-)
+);

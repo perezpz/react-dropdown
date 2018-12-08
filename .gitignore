@@ -2,6 +2,7 @@
 dist
 build
 config
+coverage
 lib
 
 # node packages
