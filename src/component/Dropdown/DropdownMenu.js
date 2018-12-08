@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import Animate from 'rc-animate';
-import classNames from 'classnames';
 import { DropdownContext } from './Dropdown';
 import Popper from 'popper.js';
 
