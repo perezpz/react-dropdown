@@ -4,6 +4,7 @@ Simple Dropdown component for React
 
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
+[![Test coverage][coveralls-image]][coveralls-url]
 [![node version][node-image]][node-url]
 
 <!-- [![npm download][download-image]][download-url] -->
@@ -12,6 +13,8 @@ Simple Dropdown component for React
 [npm-url]: https://www.npmjs.com/package/@bronzetrees/react-dropdown
 [travis-image]: https://travis-ci.org/OnlyBreak/react-dropdown.svg?branch=master
 [travis-url]: https://travis-ci.org/OnlyBreak/react-dropdown
+[coveralls-image]: https://coveralls.io/repos/github/OnlyBreak/react-dropdown/badge.svg
+[coveralls-url]: https://coveralls.io/github/OnlyBreak/react-dropdown
 [node-image]: https://img.shields.io/badge/node.js-%3E%3D8.11.1-green.svg
 [node-url]: http://nodejs.org/download/
 [download-image]: https://img.shields.io/npm/v/@bronzetrees/react-dropdown.svg?style=flat-square
