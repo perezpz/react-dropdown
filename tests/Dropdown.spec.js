@@ -7,7 +7,7 @@ import Dropdown from '../src/component/Dropdown';
 describe('Advanced usage', () => {
   const state = {
     menuAlign: 'bottom',
-    trigger: 'click'
+    trigger: 'hover'
   };
 
   const dropdown = mount(
@@ -26,13 +26,13 @@ describe('Advanced usage', () => {
   );
 
   it('allows us to set props', () => {
-    expect(dropdown.props().trigger).toEqual('click');
-    dropdown.setProps({ trigger: 'hover' });
     expect(dropdown.props().trigger).toEqual('hover');
+    dropdown.setProps({ trigger: 'click' });
+    expect(dropdown.props().trigger).toEqual('click');
   });
 
   it('renders correctly', () => {
-    dropdown.find('span.dropdown-link').simulate('click');
+    dropdown.find('span.dropdown-link').simulate('mouseEnter');
     expect(dropdown.render()).toMatchSnapshot();
   });
 });
