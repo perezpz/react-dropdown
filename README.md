@@ -70,8 +70,8 @@ ReactDOM.render(
         <tr>
           <td>trigger</td>
           <td>String</td>
-          <td>'click'</td>
-          <td>the trigger mode which executes the dropdown action, only support the default mode by far.</td>
+          <td>'hover'</td>
+          <td>the trigger mode which executes the dropdown action.</td>
         </tr>
     </tbody>
 </table>

@@ -6,9 +6,9 @@ import './Dropdown.css';
 
 export const DropdownContext = createContext({});
 
-class Dropdown extends PureComponent {
+class Dropdown extends React.Component {
   static defaultProps = {
-    trigger: 'click',
+    trigger: 'hover',
     menuAlign: 'bottom-end'
   };
 
@@ -16,14 +16,25 @@ class Dropdown extends PureComponent {
     super(props);
 
     this.state = {
-      visible: false,
+      visible: false
+    };
+
+    this.providerData = {
       handleClickMenuItem: () => this.handleClickMenuItem(),
-      placement: () => this.placement()
+      placement: () => this.placement(),
+      showHandler: () => this.show(),
+      hideHandler: () => this.hide()
     };
   }
 
   componentDidMount() {
     this.initEvent();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.visible !== this.state.visible) {
+      this.refs.dropdown.onVisibleChange(this.state.visible);
+    }
   }
 
   handleClickMenuItem() {
@@ -35,20 +46,20 @@ class Dropdown extends PureComponent {
   }
 
   initEvent() {
-    const { trigger } = this.props;
-    const triggerElm = ReactDOM.findDOMNode(this.defaultElem);
+    const { trigger, menu } = this.props;
+    const triggerElem = ReactDOM.findDOMNode(this.defaultElem);
 
-    if (!triggerElm) {
+    if (!triggerElem) {
       return;
     }
 
     if (trigger === 'hover') {
-      triggerElm.addEventListener('mouseenter', this.show.bind(this));
-      triggerElm.addEventListener('mouseleave', this.hide.bind(this));
+      triggerElem.addEventListener('mouseenter', this.show.bind(this));
+      triggerElem.addEventListener('mouseleave', this.hide.bind(this));
     }
 
     if (trigger === 'click') {
-      triggerElm.addEventListener('click', this.toggleMenu.bind(this));
+      triggerElem.addEventListener('click', this.toggleMenu.bind(this));
     }
   }
 
@@ -61,15 +72,13 @@ class Dropdown extends PureComponent {
   }
 
   show() {
-    this.setState({
-      visible: true
-    });
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => this.setState({ visible: true }), 250);
   }
 
   hide() {
-    this.setState({
-      visible: false
-    });
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => this.setState({ visible: false }), 150);
   }
 
   handleClickOutside() {
@@ -95,12 +104,12 @@ class Dropdown extends PureComponent {
     const { menu, children } = this.props;
 
     return (
-      <DropdownContext.Provider value={this.state}>
+      <DropdownContext.Provider value={{ ...this.state, ...this.providerData }}>
         <div className="br-dropdown">
           {React.cloneElement(children, {
             ref: ref => (this.defaultElem = ref)
           })}
-          {React.cloneElement(menu)}
+          {React.cloneElement(menu, { ref: 'dropdown' })}
         </div>
       </DropdownContext.Provider>
     );

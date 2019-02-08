@@ -32,7 +32,6 @@
   margin: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   cursor: pointer;
-  transition: all 0.3s;
 }
 
 .br-dropdown-menu-item:last-child {

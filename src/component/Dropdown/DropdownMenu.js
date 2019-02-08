@@ -4,6 +4,14 @@ import { DropdownContext } from './Dropdown';
 import Popper from 'popper.js';
 
 class DropdownMenu extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showPopper: false
+    };
+  }
+
   componentWillUnmount() {
     if (this.popperElem) {
       this.popperElem.destroy();
@@ -19,18 +27,32 @@ class DropdownMenu extends PureComponent {
     return 'slide-up';
   }
 
+  onVisibleChange(visible) {
+    this.setState({
+      showPopper: visible
+    });
+  }
+
   render() {
+    const { showHandler, hideHandler } = this.context;
+    const { showPopper } = this.state;
+
     return (
       <DropdownContext.Consumer>
-        {({ visible, placement }) => {
+        {({ placement }) => {
           const Box = props => {
             return (
               <div
-                style={{ display: props.visible ? 'block' : 'none' }}
                 className="br-dropdown-inner"
                 ref={ref => this.renderPopper(ref, placement)}
               >
-                <ul className="br-dropdown-menu">{this.props.children}</ul>
+                <ul
+                  className="br-dropdown-menu"
+                  onMouseEnter={showHandler}
+                  onMouseLeave={hideHandler}
+                >
+                  {this.props.children}
+                </ul>
               </div>
             );
           };
@@ -39,10 +61,10 @@ class DropdownMenu extends PureComponent {
             <Animate
               component=""
               exclusive
-              showProp="visible"
+              transitionAppear
               transitionName={this.getTransitionName()}
             >
-              <Box visible={visible} />
+              {showPopper ? <Box /> : null}
             </Animate>
           );
         }}
@@ -65,5 +87,7 @@ class DropdownMenu extends PureComponent {
     });
   }
 }
+
+DropdownMenu.contextType = DropdownContext;
 
 export default DropdownMenu;
